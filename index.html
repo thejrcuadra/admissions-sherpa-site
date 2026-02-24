@@ -277,15 +277,27 @@
             min-height: 85vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
             padding: 100px 0 60px;
             background: linear-gradient(135deg, #F8FBFC 0%, #E8F4F8 50%, #D4EBF2 100%);
         }
 
-        .hero-content {
-            max-width: 540px;
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
             z-index: 10;
+        }
+
+        .hero-content {
+            max-width: 500px;
+            flex-shrink: 0;
         }
 
         .hero h1 {
@@ -349,51 +361,47 @@
             color: var(--bg-white);
         }
 
-        /* Mountain shapes for Hero - subtle, elegant */
+        /* Mountain shapes for Hero - subtle with coral accent */
         .mountain {
             position: absolute;
             bottom: 0;
             z-index: 1;
-            opacity: 0.12;
+            opacity: 0.15;
         }
 
         .mountain-1 {
             left: -5%;
             width: 50%;
-            height: 200px;
-            background: var(--accent-teal);
+            height: 180px;
+            background: linear-gradient(135deg, var(--accent-teal) 60%, var(--cta-coral) 100%);
             clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
         }
 
         .mountain-2 {
             left: 25%;
             width: 40%;
-            height: 160px;
-            background: var(--accent-teal);
+            height: 140px;
+            background: linear-gradient(135deg, var(--accent-teal) 40%, var(--cta-coral) 100%);
             clip-path: polygon(20% 100%, 55% 0%, 90% 100%);
             z-index: 2;
-            opacity: 0.08;
+            opacity: 0.10;
         }
 
         .mountain-3 {
             right: 0;
             width: 35%;
-            height: 140px;
-            background: var(--accent-teal);
+            height: 120px;
+            background: linear-gradient(135deg, var(--cta-coral) 0%, var(--accent-teal) 60%);
             clip-path: polygon(10% 100%, 50% 0%, 100% 100%);
             z-index: 0;
-            opacity: 0.06;
+            opacity: 0.08;
         }
 
         /* Hero Image */
         .hero-image {
-            position: absolute;
-            right: 8%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 380px;
-            height: 460px;
-            z-index: 5;
+            width: 340px;
+            height: 420px;
+            flex-shrink: 0;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(26, 83, 92, 0.15);
@@ -1239,9 +1247,11 @@
                 grid-template-columns: 1.5fr 1fr 1fr 100px;
             }
             .hero-image {
-                width: 320px;
-                height: 400px;
-                right: 3%;
+                width: 300px;
+                height: 380px;
+            }
+            .hero-inner {
+                gap: 40px;
             }
         }
 
@@ -1259,6 +1269,10 @@
             .hero {
                 text-align: center;
             }
+            .hero-inner {
+                flex-direction: column;
+                gap: 40px;
+            }
             .hero-content {
                 max-width: 100%;
             }
@@ -1266,7 +1280,9 @@
                 justify-content: center;
             }
             .hero-image {
-                display: none;
+                width: 280px;
+                height: 340px;
+                order: -1;
             }
             .process-grid, .pathways-grid, .journey-grid {
                 grid-template-columns: 1fr;
@@ -1357,22 +1373,22 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
-            <h1>Guiding you to college, <span>one step at a time.</span></h1>
-            <p class="hero-description">Just as Sherpas guide climbers through treacherous mountain terrain, My Admissions Sherpa makes navigating the college admissions process a smoother journey. You will receive expert, personalized guidance that transforms the daunting application process into an exciting adventure.</p>
-            <div class="hero-cta">
-                <a href="#contact" class="primary">Start Your Journey</a>
-                <a href="#results" class="secondary">See Our Results</a>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1>Guiding you to college, <span>one step at a time.</span></h1>
+                <p class="hero-description">Just as Sherpas guide climbers through treacherous mountain terrain, My Admissions Sherpa makes navigating the college admissions process a smoother journey. You will receive expert, personalized guidance that transforms the daunting application process into an exciting adventure.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="primary">Start Your Journey</a>
+                    <a href="#results" class="secondary">See Our Results</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/kate-jenny.jpg" alt="Kate and Jenny - My Admissions Sherpa founders">
             </div>
         </div>
         <div class="mountain mountain-1"></div>
         <div class="mountain mountain-2"></div>
         <div class="mountain mountain-3"></div>
-
-        <div class="hero-image">
-            <img src="images/kate-jenny.jpg" alt="Kate and Jenny - My Admissions Sherpa founders">
-        </div>
-
         <div class="floating-orb-1"></div>
     </section>
 
