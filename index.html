@@ -274,147 +274,135 @@
 
         /* Hero Section */
         .hero {
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding: 120px 0 80px;
-            background: linear-gradient(to bottom, #87CEEB 0%, #E0F2F7 80%, var(--bg-offwhite) 100%); /* Gradient Sky */
+            padding: 100px 0 60px;
+            background: linear-gradient(135deg, #F8FBFC 0%, #E8F4F8 50%, #D4EBF2 100%);
         }
 
         .hero-content {
-            max-width: 600px;
+            max-width: 540px;
             z-index: 10;
         }
 
         .hero h1 {
             font-family: var(--font-headline);
-            font-size: clamp(3.8rem, 9vw, 8rem);
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            margin-bottom: 32px;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
             color: var(--text-charcoal);
         }
 
         .hero h1 span {
             color: var(--accent-teal);
+            display: block;
         }
 
         .hero-description {
-            font-size: 1.15rem;
-            color: var(--text-charcoal);
-            max-width: 550px;
-            line-height: 1.7;
-            margin-bottom: 40px;
+            font-size: 1.1rem;
+            color: #4A5568;
+            max-width: 480px;
+            line-height: 1.75;
+            margin-bottom: 36px;
             font-weight: 400;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px 24px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .hero-cta {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             align-items: center;
         }
 
         .hero-cta a {
-            padding: 18px 40px;
-            border-radius: 100px;
+            padding: 16px 32px;
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .hero-cta .primary {
-            background: var(--cta-coral);
+            background: var(--accent-teal);
             color: var(--bg-white);
         }
 
         .hero-cta .primary:hover {
-            background: #FF4A4A;
-            box-shadow: 0 0 30px rgba(255,107,107,0.6);
+            background: #15454D;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 83, 92, 0.3);
         }
 
         .hero-cta .secondary {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-white);
             color: var(--accent-teal);
             border: 2px solid var(--accent-teal);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .hero-cta .secondary:hover {
             background: var(--accent-teal);
             color: var(--bg-white);
-            box-shadow: 0 0 20px rgba(26, 83, 92, 0.4);
         }
 
-        /* Mountain shapes for Hero */
+        /* Mountain shapes for Hero - subtle, elegant */
         .mountain {
             position: absolute;
             bottom: 0;
-            background: linear-gradient(to top, var(--accent-teal), #4B7C84);
             z-index: 1;
+            opacity: 0.12;
         }
 
         .mountain-1 {
-            left: -10%;
-            width: 70%;
-            height: 400px;
-            clip-path: polygon(0% 100%, 70% 0%, 100% 100%);
-            transform: scaleX(1.1);
+            left: -5%;
+            width: 50%;
+            height: 200px;
+            background: var(--accent-teal);
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
         }
 
         .mountain-2 {
-            left: 30%;
-            width: 60%;
-            height: 300px;
-            clip-path: polygon(30% 100%, 60% 0%, 90% 100%);
-            background: linear-gradient(to top, #4B7C84, #6A9EA4);
-            transform: scaleX(0.9);
+            left: 25%;
+            width: 40%;
+            height: 160px;
+            background: var(--accent-teal);
+            clip-path: polygon(20% 100%, 55% 0%, 90% 100%);
             z-index: 2;
+            opacity: 0.08;
         }
 
         .mountain-3 {
-            right: -5%;
-            width: 50%;
-            height: 250px;
+            right: 0;
+            width: 35%;
+            height: 140px;
+            background: var(--accent-teal);
             clip-path: polygon(10% 100%, 50% 0%, 100% 100%);
-            background: linear-gradient(to top, #6A9EA4, #8BBEC4);
-            transform: scaleX(1.2);
             z-index: 0;
+            opacity: 0.06;
         }
 
         /* Hero Image */
         .hero-image {
             position: absolute;
-            right: 5%;
+            right: 8%;
             top: 50%;
             transform: translateY(-50%);
-            width: 420px;
-            height: 500px;
+            width: 380px;
+            height: 460px;
             z-index: 5;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 50px rgba(26, 83, 92, 0.15);
         }
         .hero-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center top;
-        }
-        .hero-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
-            pointer-events: none;
         }
 
 
