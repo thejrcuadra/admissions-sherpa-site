@@ -1035,49 +1035,83 @@
             transform: rotate(10deg);
         }
 
-        /* School Logos Section */
+        /* School Logos — Infinite Marquee Carousel */
         .schools-section {
             padding: 100px 0;
             background: var(--bg-white);
             text-align: center;
             position: relative;
         }
-        .school-logo-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 50px 60px;
+
+        .logo-carousel {
             margin-top: 60px;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
+            overflow: hidden;
+            width: 100%;
+            /* Fade edges for a polished look */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
         }
-        .school-logo-grid .logo-item {
-            width: 140px;
-            height: 80px;
+
+        .logo-track {
+            display: flex;
+            width: max-content;
+            gap: 28px;
+            padding: 10px 0;
+        }
+
+        .logo-track.row-1 {
+            animation: marquee-left 45s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .logo-track.row-2 {
+            animation: marquee-right 38s linear infinite;
+        }
+
+        /* Pause both rows on hover */
+        .logo-carousel:hover .logo-track {
+            animation-play-state: paused;
+        }
+
+        .logo-track .logo-item {
+            flex: 0 0 auto;
+            width: 148px;
+            height: 78px;
             background: #FFFFFF;
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 12px 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
-        .school-logo-grid .logo-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+        .logo-track .logo-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
         }
-        .school-logo-grid .logo-item img {
+
+        .logo-track .logo-item img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            opacity: 0.6;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0.65;
+            transition: opacity 0.3s ease;
         }
-        .school-logo-grid .logo-item:hover img {
+
+        .logo-track .logo-item:hover img {
             opacity: 1;
-            transform: scale(1.05);
+        }
+
+        @keyframes marquee-left {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marquee-right {
+            0%   { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
         }
 
         /* Testimonials */
@@ -1809,24 +1843,71 @@
                 <h2>Accepted to Top Universities Worldwide</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="school-logo-grid">
-                <!-- Clean white-bg logos -->
-                <div class="logo-item"><img src="images/penn-clean.jpg" alt="University of Pennsylvania"></div>
-                <div class="logo-item"><img src="images/ucla-clean.jpg" alt="UCLA"></div>
-                <div class="logo-item"><img src="images/johns-hopkins.jpg" alt="Johns Hopkins University"></div>
-                <div class="logo-item"><img src="images/penn-state.jpg" alt="Penn State"></div>
-                <div class="logo-item"><img src="images/nyu.jpg" alt="NYU"></div>
-                <div class="logo-item"><img src="images/vanderbilt.jpg" alt="Vanderbilt University"></div>
-                <div class="logo-item"><img src="images/northeastern.jpg" alt="Northeastern University"></div>
-                <div class="logo-item"><img src="images/virginia-tech.jpg" alt="Virginia Tech"></div>
-                <div class="logo-item"><img src="images/emory.jpg" alt="Emory University"></div>
-                <div class="logo-item"><img src="images/william-mary.jpg" alt="William &amp; Mary"></div>
-                <div class="logo-item"><img src="images/temple.jpg" alt="Temple University"></div>
-                <div class="logo-item"><img src="images/tulane.jpg" alt="Tulane University"></div>
-                <div class="logo-item"><img src="images/indiana.jpg" alt="Indiana University"></div>
-                <div class="logo-item"><img src="images/umd-logo.png" alt="University of Maryland"></div>
-                <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/en/2/29/Harvard_shield_wreath.svg" alt="Harvard University"></div>
-                <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Columbia_University_shield.svg/100px-Columbia_University_shield.svg.png" alt="Columbia University"></div>
+            <!-- Infinite marquee carousel — 2 rows, opposite directions -->
+            <div class="logo-carousel">
+
+                <!-- Row 1 → scrolls left -->
+                <div class="logo-track row-1" aria-label="Schools where our students were accepted">
+                    <!-- Set A -->
+                    <div class="logo-item"><img src="images/penn-clean.jpg" alt="University of Pennsylvania"></div>
+                    <div class="logo-item"><img src="images/brown-clean.jpg" alt="Brown University"></div>
+                    <div class="logo-item"><img src="images/cornell.jpg" alt="Cornell University"></div>
+                    <div class="logo-item"><img src="images/johns-hopkins.jpg" alt="Johns Hopkins University"></div>
+                    <div class="logo-item"><img src="images/vanderbilt.jpg" alt="Vanderbilt University"></div>
+                    <div class="logo-item"><img src="images/emory.jpg" alt="Emory University"></div>
+                    <div class="logo-item"><img src="images/william-mary.jpg" alt="William &amp; Mary"></div>
+                    <div class="logo-item"><img src="images/virginia-tech.jpg" alt="Virginia Tech"></div>
+                    <div class="logo-item"><img src="images/northeastern.jpg" alt="Northeastern University"></div>
+                    <div class="logo-item"><img src="images/nyu.jpg" alt="NYU"></div>
+                    <div class="logo-item"><img src="images/bucknell.jpg" alt="Bucknell University"></div>
+                    <div class="logo-item"><img src="images/tufts.jpg" alt="Tufts University"></div>
+                    <div class="logo-item"><img src="images/umd-logo.png" alt="University of Maryland"></div>
+                    <!-- Set B (duplicate for seamless loop) -->
+                    <div class="logo-item" aria-hidden="true"><img src="images/penn-clean.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/brown-clean.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/cornell.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/johns-hopkins.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/vanderbilt.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/emory.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/william-mary.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/virginia-tech.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/northeastern.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/nyu.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/bucknell.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/tufts.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/umd-logo.png" alt=""></div>
+                </div>
+
+                <!-- Row 2 → scrolls right -->
+                <div class="logo-track row-2">
+                    <!-- Set A -->
+                    <div class="logo-item"><img src="images/ucla-clean.jpg" alt="UCLA"></div>
+                    <div class="logo-item"><img src="images/penn-state.jpg" alt="Penn State"></div>
+                    <div class="logo-item"><img src="images/temple.jpg" alt="Temple University"></div>
+                    <div class="logo-item"><img src="images/tulane.jpg" alt="Tulane University"></div>
+                    <div class="logo-item"><img src="images/uc-san-diego.jpg" alt="UC San Diego"></div>
+                    <div class="logo-item"><img src="images/miami.jpg" alt="University of Miami"></div>
+                    <div class="logo-item"><img src="images/richmond.jpg" alt="University of Richmond"></div>
+                    <div class="logo-item"><img src="images/villanova.jpg" alt="Villanova University"></div>
+                    <div class="logo-item"><img src="images/st-andrews.jpg" alt="University of St Andrews"></div>
+                    <div class="logo-item"><img src="images/indiana.jpg" alt="Indiana University"></div>
+                    <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/en/2/29/Harvard_shield_wreath.svg" alt="Harvard University"></div>
+                    <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Columbia_University_shield.svg/100px-Columbia_University_shield.svg.png" alt="Columbia University"></div>
+                    <!-- Set B (duplicate for seamless loop) -->
+                    <div class="logo-item" aria-hidden="true"><img src="images/ucla-clean.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/penn-state.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/temple.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/tulane.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/uc-san-diego.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/miami.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/richmond.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/villanova.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/st-andrews.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="images/indiana.jpg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="https://upload.wikimedia.org/wikipedia/en/2/29/Harvard_shield_wreath.svg" alt=""></div>
+                    <div class="logo-item" aria-hidden="true"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Columbia_University_shield.svg/100px-Columbia_University_shield.svg.png" alt=""></div>
+                </div>
+
             </div>
         </div>
     </section>
