@@ -370,14 +370,26 @@
             min-height: 85vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
             padding: 100px 0 60px;
             background: linear-gradient(135deg, #F8FBFC 0%, #E8F4F8 50%, #D4EBF2 100%);
         }
 
+        /* Groups text + image together so the pair is centered */
+        .hero-group {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            justify-content: center;
+            z-index: 10;
+            position: relative;
+        }
+
         .hero-content {
-            max-width: 540px;
+            max-width: 520px;
+            flex: 0 1 520px;
             z-index: 10;
         }
 
@@ -478,18 +490,16 @@
             opacity: 0.06;
         }
 
-        /* Hero Image */
+        /* Hero Image — in-flow, part of the hero-group flex */
         .hero-image {
-            position: absolute;
-            right: 8%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 380px;
-            height: 460px;
+            position: relative;
+            flex: 0 0 360px;
+            width: 360px;
+            height: 440px;
             z-index: 5;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(26, 83, 92, 0.15);
+            box-shadow: 0 20px 50px rgba(26, 83, 92, 0.18);
         }
         .hero-image img {
             width: 100%;
@@ -1079,9 +1089,95 @@
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
             margin-top: 80px;
+        }
+
+        /* Featured (full-width) testimonial */
+        .testimonial-card.featured {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+            background: linear-gradient(135deg, var(--bg-white) 0%, #F0F8FA 100%);
+            border: 2px solid rgba(26, 83, 92, 0.15);
+        }
+
+        .testimonial-card.featured .featured-text-side {
+            flex: 1;
+        }
+
+        .testimonial-card.featured .featured-school-badge {
+            background: var(--accent-teal);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            padding: 8px 18px;
+            border-radius: 100px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card.featured .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .testimonial-card.featured .featured-accent {
+            flex: 0 0 140px;
+            text-align: center;
+        }
+
+        .testimonial-card.featured .featured-accent .school-initial {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-teal) 0%, #15454D 100%);
+            color: white;
+            font-family: var(--font-headline);
+            font-size: 2.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            box-shadow: 0 8px 24px rgba(26, 83, 92, 0.3);
+        }
+
+        /* Teaser cards that link out */
+        .testimonial-card.teaser {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1.5px solid rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .testimonial-card.teaser:hover {
+            border-color: var(--accent-teal);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(26, 83, 92, 0.12);
+        }
+
+        .teaser-link {
+            color: var(--accent-teal);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 24px;
+            transition: gap 0.2s ease;
+        }
+
+        .testimonial-card.teaser:hover .teaser-link {
+            gap: 10px;
         }
 
         .testimonial-card {
@@ -1325,16 +1421,19 @@
             .container {
                 padding: 0 40px;
             }
-            .services-grid, .testimonials-grid {
+            .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .comparison-header, .comparison-row {
                 grid-template-columns: 1.5fr 1fr 1fr 100px;
             }
             .hero-image {
-                width: 320px;
-                height: 400px;
-                right: 3%;
+                width: 300px;
+                height: 380px;
+                flex: 0 0 300px;
+            }
+            .hero-group {
+                gap: 48px;
             }
         }
 
@@ -1351,15 +1450,24 @@
             }
             .hero {
                 text-align: center;
+                padding: 80px 0 40px;
+            }
+            .hero-group {
+                flex-direction: column;
+                gap: 40px;
             }
             .hero-content {
                 max-width: 100%;
+                flex: none;
             }
             .hero-cta {
                 justify-content: center;
             }
             .hero-image {
-                display: none;
+                width: 100%;
+                max-width: 360px;
+                height: 300px;
+                flex: none;
             }
             .process-grid, .pathways-grid, .journey-grid {
                 grid-template-columns: 1fr;
@@ -1376,6 +1484,13 @@
             }
             .testimonials-grid {
                 grid-template-columns: 1fr;
+            }
+            .testimonial-card.featured {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .testimonial-card.featured .featured-accent {
+                flex: none;
             }
             .journey-visual {
                 height: 350px;
@@ -1452,22 +1567,27 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
-            <h1>Guiding you to college, <span>one step at a time.</span></h1>
-            <p class="hero-description">Just as Sherpas guide climbers through treacherous mountain terrain, My Admissions Sherpa makes navigating the college admissions process a smoother journey. You will receive expert, personalized guidance that transforms the daunting application process into an exciting adventure.</p>
-            <div class="hero-cta">
-                <a href="https://www.myadmissionssherpa.com/consultation" target="_blank" class="primary">Start Your Journey</a>
-                <a href="#results" class="secondary">See Our Results</a>
+        <div class="container">
+            <div class="hero-group">
+                <!-- Text side -->
+                <div class="hero-content">
+                    <h1>Guiding you to college, <span>one step at a time.</span></h1>
+                    <p class="hero-description">Just as Sherpas guide climbers through treacherous mountain terrain, My Admissions Sherpa makes navigating the college admissions process a smoother journey. You will receive expert, personalized guidance that transforms the daunting application process into an exciting adventure.</p>
+                    <div class="hero-cta">
+                        <a href="https://www.myadmissionssherpa.com/consultation" target="_blank" class="primary">Start Your Journey</a>
+                        <a href="#results" class="secondary">See Our Results</a>
+                    </div>
+                </div>
+                <!-- Image side -->
+                <div class="hero-image">
+                    <img src="images/kate-jenny.jpg" alt="Kate and Jenny - My Admissions Sherpa founders">
+                </div>
             </div>
         </div>
+
         <div class="mountain mountain-1"></div>
         <div class="mountain mountain-2"></div>
         <div class="mountain mountain-3"></div>
-
-        <div class="hero-image">
-            <img src="images/kate-jenny.jpg" alt="Kate and Jenny - My Admissions Sherpa founders">
-        </div>
-
         <div class="floating-orb-1"></div>
     </section>
 
@@ -1690,11 +1810,12 @@
                 <div class="section-divider"></div>
             </div>
             <div class="school-logo-grid">
-                <div class="logo-item"><img src="images/brown.jpg" alt="Brown University"></div>
-                <div class="logo-item"><img src="images/penn.jpg" alt="University of Pennsylvania"></div>
+                <!-- Dark-bg logos: dark card background so they look intentional -->
+                <div class="logo-item" style="background:#1A1A2E;"><img src="images/brown.jpg" alt="Brown University" style="opacity:1;"></div>
+                <div class="logo-item" style="background:#0A1628;"><img src="images/penn.jpg" alt="University of Pennsylvania" style="opacity:1;"></div>
                 <div class="logo-item"><img src="images/nyu.jpg" alt="NYU"></div>
                 <div class="logo-item"><img src="images/vanderbilt.jpg" alt="Vanderbilt University"></div>
-                <div class="logo-item"><img src="images/ucla.jpg" alt="UCLA"></div>
+                <div class="logo-item" style="background:#00397D;"><img src="images/ucla.jpg" alt="UCLA" style="opacity:1;"></div>
                 <div class="logo-item"><img src="images/northeastern.jpg" alt="Northeastern University"></div>
                 <div class="logo-item"><img src="images/tulane.jpg" alt="Tulane University"></div>
                 <div class="logo-item"><img src="images/indiana.jpg" alt="Indiana University"></div>
@@ -1715,39 +1836,43 @@
                 <div class="section-divider"></div>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card card-hover scroll-reveal" style="--scroll-reveal-delay: 0s;">
-                    <span class="testimonial-school">Accepted: Columbia</span>
-                    <p class="testimonial-text">"When we started, my son had no idea what made him unique. His Sherpa helped him discover a compelling story about his robotics journey. <strong>The essays practically wrote themselves after that.</strong> His acceptance to his dream school felt like reaching the summit after a long climb."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">[PHOTO PLACEHOLDER]</div>
-                        <div class="author-info">
-                            <h4>Michael Johnson</h4>
-                            <p>Parent, Class of 2025</p>
+
+                <!-- FEATURED: 1 standout story — full width -->
+                <div class="testimonial-card featured scroll-reveal">
+                    <div class="featured-text-side">
+                        <span class="featured-school-badge">⭐ Accepted: Harvard University</span>
+                        <p class="testimonial-text">"I thought I knew what to write about. My consultant pushed back — gently but firmly — and helped me find a story I didn't know I had. <strong>That essay became my 'why Harvard' that actually felt like me.</strong> The personalized attention was unlike anything I could have gotten elsewhere. Worth every minute."</p>
+                        <div class="testimonial-author" style="margin-top: 28px;">
+                            <div class="author-info">
+                                <h4 style="font-size:1.1rem;">Sarah Chen</h4>
+                                <p style="color:var(--accent-teal); font-weight:600;">Student, Harvard '28</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="testimonial-card card-hover scroll-reveal" style="--scroll-reveal-delay: 0.1s;">
-                    <span class="testimonial-school">Accepted: Harvard</span>
-                    <p class="testimonial-text">"I thought I knew what to write about. My consultant pushed back — gently but firmly — and helped me find a story I didn't know I had. <strong>That essay became my 'why Harvard' that actually felt like me.</strong> The personalized attention was incredible."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">[PHOTO PLACEHOLDER]</div>
-                        <div class="author-info">
-                            <h4>Sarah Chen</h4>
-                            <p>Student, Harvard '28</p>
-                        </div>
+                    <div class="featured-accent">
+                        <div class="school-initial">H</div>
+                        <p style="font-size:0.8rem; color:#666; font-weight:600; letter-spacing:0.05em;">HARVARD<br>UNIVERSITY</p>
                     </div>
                 </div>
-                <div class="testimonial-card card-hover scroll-reveal" style="--scroll-reveal-delay: 0.2s;">
-                    <span class="testimonial-school">Accepted: Stanford</span>
-                    <p class="testimonial-text">"As a first-generation college applicant, I was completely overwhelmed. My parents couldn't help. <strong>My Sherpa became the mentor I desperately needed — patient, knowledgeable, always available.</strong> I got into every school I applied to, including my top choice."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">[PHOTO PLACEHOLDER]</div>
-                        <div class="author-info">
-                            <h4>Alex Rodriguez</h4>
-                            <p>Student, Stanford '28</p>
-                        </div>
+
+                <!-- TEASER 1: links to real success stories page -->
+                <a href="https://www.myadmissionssherpa.com/sucess-stories" target="_blank" rel="noopener" class="testimonial-card teaser scroll-reveal" style="--scroll-reveal-delay: 0.1s; text-decoration:none; color: inherit;">
+                    <div>
+                        <span class="testimonial-school">Accepted: Columbia University</span>
+                        <p class="testimonial-text" style="margin-top: 16px;">"His Sherpa helped him discover a compelling story. The essays practically wrote themselves after that."</p>
                     </div>
-                </div>
+                    <span class="teaser-link">Read the full story →</span>
+                </a>
+
+                <!-- TEASER 2: links to real success stories page -->
+                <a href="https://www.myadmissionssherpa.com/sucess-stories" target="_blank" rel="noopener" class="testimonial-card teaser scroll-reveal" style="--scroll-reveal-delay: 0.2s; text-decoration:none; color: inherit;">
+                    <div>
+                        <span class="testimonial-school">Accepted: Stanford University</span>
+                        <p class="testimonial-text" style="margin-top: 16px;">"As a first-generation applicant, my Sherpa became the mentor I desperately needed. I got into every school I applied to."</p>
+                    </div>
+                    <span class="teaser-link">Read the full story →</span>
+                </a>
+
             </div>
             <div style="text-align:center; margin-top: 56px;">
                 <a href="https://www.myadmissionssherpa.com/sucess-stories" target="_blank" rel="noopener" style="display:inline-block; border: 2px solid var(--accent-teal); color: var(--accent-teal); padding: 14px 36px; border-radius: 100px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='var(--accent-teal)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--accent-teal)';">
