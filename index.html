@@ -31,16 +31,12 @@
             scroll-behavior: smooth;
         }
 
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-        }
-
         body {
             font-family: var(--font-body);
             background: var(--bg-offwhite);
             color: var(--text-charcoal);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -95,16 +91,109 @@
         }
 
         .logo {
-            font-family: var(--font-headline);
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text-charcoal);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: -0.02em;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 56px;
+            width: auto;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo img:hover {
+            opacity: 0.85;
         }
 
         .logo span {
             color: var(--accent-teal);
+        }
+
+        /* Bootcamp Banner CTA */
+        .bootcamp-banner {
+            background: linear-gradient(135deg, #E8681E 0%, #c45516 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bootcamp-banner::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -60px;
+            width: 280px;
+            height: 280px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .bootcamp-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -30px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .bootcamp-banner .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .bootcamp-banner h2 {
+            font-family: var(--font-headline);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .bootcamp-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .bootcamp-btn {
+            display: inline-block;
+            background: #fff;
+            color: #E8681E;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 16px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .bootcamp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+            background: #FFF5F0;
         }
 
         .nav-links {
@@ -281,27 +370,15 @@
             min-height: 85vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             position: relative;
             overflow: hidden;
             padding: 100px 0 60px;
             background: linear-gradient(135deg, #F8FBFC 0%, #E8F4F8 50%, #D4EBF2 100%);
         }
 
-        .hero-inner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 60px;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 40px;
-            z-index: 10;
-        }
-
         .hero-content {
-            max-width: 500px;
-            flex-shrink: 0;
+            max-width: 540px;
+            z-index: 10;
         }
 
         .hero h1 {
@@ -365,47 +442,51 @@
             color: var(--bg-white);
         }
 
-        /* Mountain shapes for Hero - subtle with coral accent */
+        /* Mountain shapes for Hero - subtle, elegant */
         .mountain {
             position: absolute;
             bottom: 0;
             z-index: 1;
-            opacity: 0.15;
+            opacity: 0.12;
         }
 
         .mountain-1 {
             left: -5%;
             width: 50%;
-            height: 180px;
-            background: linear-gradient(135deg, var(--accent-teal) 60%, var(--cta-coral) 100%);
+            height: 200px;
+            background: var(--accent-teal);
             clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
         }
 
         .mountain-2 {
             left: 25%;
             width: 40%;
-            height: 140px;
-            background: linear-gradient(135deg, var(--accent-teal) 40%, var(--cta-coral) 100%);
+            height: 160px;
+            background: var(--accent-teal);
             clip-path: polygon(20% 100%, 55% 0%, 90% 100%);
             z-index: 2;
-            opacity: 0.10;
+            opacity: 0.08;
         }
 
         .mountain-3 {
             right: 0;
             width: 35%;
-            height: 120px;
-            background: linear-gradient(135deg, var(--cta-coral) 0%, var(--accent-teal) 60%);
+            height: 140px;
+            background: var(--accent-teal);
             clip-path: polygon(10% 100%, 50% 0%, 100% 100%);
             z-index: 0;
-            opacity: 0.08;
+            opacity: 0.06;
         }
 
         /* Hero Image */
         .hero-image {
-            width: 340px;
-            height: 420px;
-            flex-shrink: 0;
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 380px;
+            height: 460px;
+            z-index: 5;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 20px 50px rgba(26, 83, 92, 0.15);
@@ -1251,11 +1332,9 @@
                 grid-template-columns: 1.5fr 1fr 1fr 100px;
             }
             .hero-image {
-                width: 300px;
-                height: 380px;
-            }
-            .hero-inner {
-                gap: 40px;
+                width: 320px;
+                height: 400px;
+                right: 3%;
             }
         }
 
@@ -1273,10 +1352,6 @@
             .hero {
                 text-align: center;
             }
-            .hero-inner {
-                flex-direction: column;
-                gap: 40px;
-            }
             .hero-content {
                 max-width: 100%;
             }
@@ -1284,9 +1359,7 @@
                 justify-content: center;
             }
             .hero-image {
-                width: 280px;
-                height: 340px;
-                order: -1;
+                display: none;
             }
             .process-grid, .pathways-grid, .journey-grid {
                 grid-template-columns: 1fr;
@@ -1356,44 +1429,58 @@
 <body>
     <!-- Announcement Bar -->
     <div class="announcement-bar">
-        Limited spots available for Class of 2026. <a href="#contact">Apply now!</a>
+        Limited spots available for Class of 2026. <a href="https://www.myadmissionssherpa.com/consultation" target="_blank">Apply now!</a>
     </div>
 
     <!-- Navigation -->
     <nav>
         <div class="container nav-inner">
-            <a href="#" class="logo">My Admissions <span>Sherpa</span></a>
+            <a href="https://www.myadmissionssherpa.com/" class="logo">
+                <img src="images/logo-admissions-sherpa.jpg" alt="My Admissions Sherpa">
+            </a>
             <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pathways">Pathways</a></li>
-                <li><a href="#schools">Success</a></li>
-                <li><a href="#stories">Testimonials</a></li>
-                <li><a href="#resources">Resources</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/">Home</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/about-us">About Us</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/online-programs">Programs</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/summer-boot-camp">Summer Boot Camp</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/sucess-stories">Success Stories</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/free-resources">Free Resources</a></li>
             </ul>
-            <a href="tel:+1-800-123-4567" class="nav-phone">(800) 123-4567</a>
-            <a href="#contact" class="cta-button">Get Started</a>
+            <a href="https://www.myadmissionssherpa.com/consultation" class="cta-button">Book a Call</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-content">
-                <h1>Guiding you to college, <span>one step at a time.</span></h1>
-                <p class="hero-description">Just as Sherpas guide climbers through treacherous mountain terrain, My Admissions Sherpa makes navigating the college admissions process a smoother journey. You will receive expert, personalized guidance that transforms the daunting application process into an exciting adventure.</p>
-                <div class="hero-cta">
-                    <a href="#contact" class="primary">Start Your Journey</a>
-                    <a href="#results" class="secondary">See Our Results</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/kate-jenny.jpg" alt="Kate and Jenny - My Admissions Sherpa founders">
+        <div class="container hero-content">
+            <h1>Guiding you to college, <span>one step at a time.</span></h1>
+            <p class="hero-description">Just as Sherpas guide climbers through treacherous mountain terrain, My Admissions Sherpa makes navigating the college admissions process a smoother journey. You will receive expert, personalized guidance that transforms the daunting application process into an exciting adventure.</p>
+            <div class="hero-cta">
+                <a href="https://www.myadmissionssherpa.com/consultation" target="_blank" class="primary">Start Your Journey</a>
+                <a href="#results" class="secondary">See Our Results</a>
             </div>
         </div>
         <div class="mountain mountain-1"></div>
         <div class="mountain mountain-2"></div>
         <div class="mountain mountain-3"></div>
+
+        <div class="hero-image">
+            <img src="images/kate-jenny.jpg" alt="Kate and Jenny - My Admissions Sherpa founders">
+        </div>
+
         <div class="floating-orb-1"></div>
+    </section>
+
+    <!-- Summer Boot Camp Banner -->
+    <section class="bootcamp-banner scroll-reveal">
+        <div class="container">
+            <span class="badge">🏕️ Now Enrolling</span>
+            <h2>Summer Boot Camp 2026</h2>
+            <p>An intensive, results-driven program for high school students ready to get ahead on college applications. Limited seats — spots fill fast.</p>
+            <a href="https://www.myadmissionssherpa.com/summer-boot-camp" class="bootcamp-btn" target="_blank" rel="noopener">
+                Register for Boot Camp →
+            </a>
+        </div>
     </section>
 
     <!-- Comparison Table (us vs national) -->
@@ -1603,11 +1690,18 @@
                 <div class="section-divider"></div>
             </div>
             <div class="school-logo-grid">
+                <div class="logo-item"><img src="images/brown.jpg" alt="Brown University"></div>
+                <div class="logo-item"><img src="images/penn.jpg" alt="University of Pennsylvania"></div>
                 <div class="logo-item"><img src="images/nyu.jpg" alt="NYU"></div>
                 <div class="logo-item"><img src="images/vanderbilt.jpg" alt="Vanderbilt University"></div>
+                <div class="logo-item"><img src="images/ucla.jpg" alt="UCLA"></div>
                 <div class="logo-item"><img src="images/northeastern.jpg" alt="Northeastern University"></div>
-                <div class="logo-item"><img src="images/indiana.jpg" alt="Indiana University"></div>
                 <div class="logo-item"><img src="images/tulane.jpg" alt="Tulane University"></div>
+                <div class="logo-item"><img src="images/indiana.jpg" alt="Indiana University"></div>
+                <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/en/2/29/Harvard_shield_wreath.svg" alt="Harvard University"></div>
+                <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Columbia_University_shield.svg/100px-Columbia_University_shield.svg.png" alt="Columbia University"></div>
+                <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Duke_University_logo.svg/150px-Duke_University_logo.svg.png" alt="Duke University"></div>
+                <div class="logo-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Stanford_Cardinal_logo.svg/150px-Stanford_Cardinal_logo.svg.png" alt="Stanford University"></div>
             </div>
         </div>
     </section>
@@ -1655,6 +1749,11 @@
                     </div>
                 </div>
             </div>
+            <div style="text-align:center; margin-top: 56px;">
+                <a href="https://www.myadmissionssherpa.com/sucess-stories" target="_blank" rel="noopener" style="display:inline-block; border: 2px solid var(--accent-teal); color: var(--accent-teal); padding: 14px 36px; border-radius: 100px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='var(--accent-teal)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--accent-teal)';">
+                    View All Success Stories →
+                </a>
+            </div>
         </div>
     </section>
 
@@ -1664,8 +1763,8 @@
             <h2>Ready to begin your journey?</h2>
             <p>Let us help your student navigate the path to their dream school with confidence and clarity.</p>
             <div class="cta-buttons">
-                <a href="#" class="primary">Schedule Free Consultation</a>
-                <a href="#services" class="secondary">View Our Services</a>
+                <a href="https://www.myadmissionssherpa.com/consultation" target="_blank" class="primary">Schedule Free Consultation</a>
+                <a href="https://www.myadmissionssherpa.com/online-programs" target="_blank" class="secondary">View Our Programs</a>
             </div>
         </div>
     </section>
@@ -1673,15 +1772,17 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <div class="footer-logo">My Admissions <span>Sherpa</span></div>
+            <div class="footer-logo">
+                <img src="images/logo-admissions-sherpa.jpg" alt="My Admissions Sherpa" style="height:48px;width:auto;object-fit:contain;opacity:0.85;">
+            </div>
             <ul class="footer-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pathways">Pathways</a></li>
-                <li><a href="#schools">Success</a></li>
-                <li><a href="#stories">Testimonials</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/online-programs">Programs</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/summer-boot-camp">Boot Camp</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/sucess-stories">Success Stories</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/free-resources">Resources</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/about-us">About Us</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/consultation">Book a Call</a></li>
+                <li><a href="https://www.myadmissionssherpa.com/privacy-policy">Privacy</a></li>
             </ul>
             <p class="footer-copy">&copy; 2024 My Admissions Sherpa. All rights reserved.</p>
         </div>
